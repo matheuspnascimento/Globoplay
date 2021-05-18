@@ -1,141 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.0 (Python 3.9.1 on win32)" generated="20210516 21:21:47.483" rpa="false" schemaversion="2">
+<robot generator="Robot 4.0 (Python 3.9.1 on win32)" generated="20210517 21:55:57.522" rpa="false" schemaversion="2">
 <suite id="s1" name="Test" source="C:\Globo\tests\test.robot">
-<test id="s1-t1" name="Deverá exibir a mídia selecionada, conter validação e exibir o video tocando.">
-<kw name="Dado que estou no site da Globoplay" library="base">
+<test id="s1-t1" name="Deverá exibir a mídia selecionada, conter validação e exibir o video tocando">
+<kw name="Iniciar Sessão" library="base" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
-<arg>${URL}</arg>
+<arg>about:blank</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20210516 21:21:47.646" level="INFO">Opening browser 'chrome' to base url 'https://globoplay.globo.com/'.</msg>
-<status status="PASS" starttime="20210516 21:21:47.645" endtime="20210516 21:21:52.388"/>
+<msg timestamp="20210517 21:55:57.713" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20210517 21:55:57.713" endtime="20210517 21:55:58.827"/>
+</kw>
+<status status="PASS" starttime="20210517 21:55:57.713" endtime="20210517 21:55:58.827"/>
+</kw>
+<kw name="Dado que estou no site da Globoplay" library="home">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20210517 21:55:58.828" level="INFO">Opening url 'https://globoplay.globo.com/'</msg>
+<status status="PASS" starttime="20210517 21:55:58.828" endtime="20210517 21:56:04.157"/>
 </kw>
 <kw name="Set Window Size" library="SeleniumLibrary">
 <arg>1920</arg>
 <arg>1080</arg>
 <doc>Sets current windows size to given ``width`` and ``height``.</doc>
-<status status="PASS" starttime="20210516 21:21:52.388" endtime="20210516 21:21:52.507"/>
+<status status="PASS" starttime="20210517 21:56:04.157" endtime="20210517 21:56:04.283"/>
 </kw>
 <kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
-<arg>10 seconds</arg>
+<arg>5 seconds</arg>
 <doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" starttime="20210516 21:21:52.508" endtime="20210516 21:21:52.511"/>
+<status status="PASS" starttime="20210517 21:56:04.283" endtime="20210517 21:56:04.285"/>
 </kw>
 <kw name="Title Should Be" library="SeleniumLibrary">
-<arg>Globoplay | Assista online aos programas da Globo</arg>
+<arg>${HOME_TITLE}</arg>
 <doc>Verifies that the current page title equals ``title``.</doc>
-<msg timestamp="20210516 21:21:52.564" level="INFO">Page title is 'Globoplay | Assista online aos programas da Globo'.</msg>
-<status status="PASS" starttime="20210516 21:21:52.511" endtime="20210516 21:21:52.564"/>
+<msg timestamp="20210517 21:56:04.291" level="INFO">Page title is 'Globoplay | Assista online aos programas da Globo'.</msg>
+<status status="PASS" starttime="20210517 21:56:04.285" endtime="20210517 21:56:04.291"/>
 </kw>
-<status status="PASS" starttime="20210516 21:21:47.645" endtime="20210516 21:21:52.564"/>
+<status status="PASS" starttime="20210517 21:55:58.828" endtime="20210517 21:56:04.292"/>
 </kw>
-<kw name="Quando entro na página de categorias" library="categoria">
+<kw name="E clico em Explore" library="home">
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//nav[text()="Explore"]</arg>
+<arg>${HOME_EXPLORE}</arg>
 <arg>10</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20210516 21:21:52.565" endtime="20210516 21:21:52.662"/>
+<status status="PASS" starttime="20210517 21:56:04.296" endtime="20210517 21:56:04.452"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//nav[text()="Explore"]</arg>
+<arg>${HOME_EXPLORE}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20210516 21:21:52.662" level="INFO">Clicking element 'xpath=//nav[text()="Explore"]'.</msg>
-<status status="PASS" starttime="20210516 21:21:52.662" endtime="20210516 21:21:52.773"/>
+<msg timestamp="20210517 21:56:04.452" level="INFO">Clicking element 'xpath=//nav[text()="Explore"]'.</msg>
+<status status="PASS" starttime="20210517 21:56:04.452" endtime="20210517 21:56:04.579"/>
 </kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//a[text()="Categorias"]</arg>
-<arg>10</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20210516 21:21:52.774" endtime="20210516 21:21:52.944"/>
+<status status="PASS" starttime="20210517 21:56:04.294" endtime="20210517 21:56:04.580"/>
 </kw>
+<kw name="Deve validar que estou na página de Categorias" library="categorias">
 <kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>xpath=//a[text()="Categorias"]</arg>
+<arg>${CAT_VALIDACAO}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20210516 21:21:52.979" level="INFO">Element 'xpath=//a[text()="Categorias"]' is displayed.</msg>
-<status status="PASS" starttime="20210516 21:21:52.944" endtime="20210516 21:21:52.979"/>
-</kw>
-<status status="PASS" starttime="20210516 21:21:52.565" endtime="20210516 21:21:52.979"/>
-</kw>
-<kw name="Então seleciono a categoria e o programa que quero assistir" library="humor">
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//h3[text()="Humor"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20210516 21:21:52.980" level="INFO">Clicking element 'xpath=//h3[text()="Humor"]'.</msg>
-<status status="PASS" starttime="20210516 21:21:52.980" endtime="20210516 21:21:53.465"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>css=h1[class="view-title page-template__header"]</arg>
-<arg>10</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20210516 21:21:53.465" endtime="20210516 21:21:53.707"/>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>css=h1[class="view-title page-template__header"]</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20210516 21:21:53.714" level="INFO">Current page contains element 'css=h1[class="view-title page-template__header"]'.</msg>
-<status status="PASS" starttime="20210516 21:21:53.707" endtime="20210516 21:21:53.714"/>
+<msg timestamp="20210517 21:56:04.730" level="INFO">Element 'xpath=//a[text()="Categorias"]' is displayed.</msg>
+<status status="PASS" starttime="20210517 21:56:04.580" endtime="20210517 21:56:04.731"/>
 </kw>
 <kw name="Title Should Be" library="SeleniumLibrary">
-<arg>Assista Humor pelo Globoplay</arg>
+<arg>${CAT_TITLE}</arg>
 <doc>Verifies that the current page title equals ``title``.</doc>
-<msg timestamp="20210516 21:21:53.717" level="INFO">Page title is 'Assista Humor pelo Globoplay'.</msg>
-<status status="PASS" starttime="20210516 21:21:53.714" endtime="20210516 21:21:53.717"/>
+<msg timestamp="20210517 21:56:04.741" level="INFO">Page title is 'Explore o conteúdo de séries, novelas, filmes e canais de TV no Globoplay'.</msg>
+<status status="PASS" starttime="20210517 21:56:04.731" endtime="20210517 21:56:04.741"/>
 </kw>
+<status status="PASS" starttime="20210517 21:56:04.580" endtime="20210517 21:56:04.741"/>
+</kw>
+<kw name="E seleciono a categoria Humor" library="categorias">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${CAT_HUMOR}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210517 21:56:04.744" level="INFO">Clicking element 'xpath=//h3[@class="categories-list-view__category-box__title"][contains(text(),"Humor")]'.</msg>
+<status status="PASS" starttime="20210517 21:56:04.743" endtime="20210517 21:56:05.219"/>
+</kw>
+<status status="PASS" starttime="20210517 21:56:04.742" endtime="20210517 21:56:05.220"/>
+</kw>
+<kw name="Deve validar que estou na página Humor" library="humor">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${HUMOR_VALIDACAO}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20210517 21:56:05.267" level="INFO">Current page contains element 'css=h1[class="view-title page-template__header"]'.</msg>
+<status status="PASS" starttime="20210517 21:56:05.221" endtime="20210517 21:56:05.267"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${HUMOR_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210517 21:56:05.283" level="INFO">Page title is 'Assista Humor pelo Globoplay'.</msg>
+<status status="PASS" starttime="20210517 21:56:05.267" endtime="20210517 21:56:05.284"/>
+</kw>
+<status status="PASS" starttime="20210517 21:56:05.220" endtime="20210517 21:56:05.284"/>
+</kw>
+<kw name="Selecionar o programa desejado" library="humor">
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//img[@class="playkit-thumb-v2__image-content"][@alt="Sinta-se em Casa"]</arg>
+<arg>${HUMOR_PROGRAM}</arg>
 <arg>10</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20210516 21:21:53.717" endtime="20210516 21:21:54.669"/>
+<status status="PASS" starttime="20210517 21:56:05.285" endtime="20210517 21:56:05.530"/>
 </kw>
 <kw name="Click Image" library="SeleniumLibrary">
-<arg>xpath=//img[@class="playkit-thumb-v2__image-content"][@alt="Sinta-se em Casa"]</arg>
+<arg>${HUMOR_PROGRAM}</arg>
 <doc>Clicks an image identified by ``locator``.</doc>
-<msg timestamp="20210516 21:21:54.669" level="INFO">Clicking image 'xpath=//img[@class="playkit-thumb-v2__image-content"][@alt="Sinta-se em Casa"]'.</msg>
-<status status="PASS" starttime="20210516 21:21:54.669" endtime="20210516 21:21:54.760"/>
+<msg timestamp="20210517 21:56:05.531" level="INFO">Clicking image 'xpath=//img[@class="playkit-thumb-v2__image-content"][@alt="Sinta-se em Casa"]'.</msg>
+<status status="PASS" starttime="20210517 21:56:05.531" endtime="20210517 21:56:05.876"/>
 </kw>
-<status status="PASS" starttime="20210516 21:21:52.980" endtime="20210516 21:21:54.760"/>
+<status status="PASS" starttime="20210517 21:56:05.284" endtime="20210517 21:56:05.876"/>
 </kw>
-<kw name="E clico em assistir para ver o programa" library="categoria">
+<kw name="E clico em assistir para ver o programa" library="programa">
 <kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>Quarentenado e entediado, Marcelo Adnet revira suas gavetas e personagens para compartilhar uma crônica diária, de cara limpa, direto de casa.</arg>
+<arg>${PROGRAM_DESC}</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20210516 21:21:54.924" level="INFO">Current page contains text 'Quarentenado e entediado, Marcelo Adnet revira suas gavetas e personagens para compartilhar uma crônica diária, de cara limpa, direto de casa.'.</msg>
-<status status="PASS" starttime="20210516 21:21:54.761" endtime="20210516 21:21:54.925"/>
+<msg timestamp="20210517 21:56:05.971" level="INFO">Current page contains text 'Quarentenado e entediado, Marcelo Adnet revira suas gavetas e personagens para compartilhar uma crônica diária, de cara limpa, direto de casa.'.</msg>
+<status status="PASS" starttime="20210517 21:56:05.877" endtime="20210517 21:56:05.971"/>
 </kw>
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>xpath=//div[@class="playkit-buttons__button playkit-buttons__colored-button playkit-buttons__colored-button--with-hover"]//span[contains(text(),'Assista')]</arg>
+<arg>${PROGRAM_ASSISTA}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20210516 21:21:54.925" endtime="20210516 21:21:54.970"/>
+<status status="PASS" starttime="20210517 21:56:05.971" endtime="20210517 21:56:06.006"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath=//div[@class="playkit-buttons__button playkit-buttons__colored-button playkit-buttons__colored-button--with-hover"]//span[contains(text(),'Assista')]</arg>
+<arg>${PROGRAM_ASSISTA}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20210516 21:21:54.970" level="INFO">Clicking element 'xpath=//div[@class="playkit-buttons__button playkit-buttons__colored-button playkit-buttons__colored-button--with-hover"]//span[contains(text(),'Assista')]'.</msg>
-<status status="PASS" starttime="20210516 21:21:54.970" endtime="20210516 21:21:55.796"/>
+<msg timestamp="20210517 21:56:06.007" level="INFO">Clicking element 'xpath=//div[@class="playkit-buttons__button playkit-buttons__colored-button playkit-buttons__colored-button--with-hover"]//span[contains(text(),'Assista')]'.</msg>
+<status status="PASS" starttime="20210517 21:56:06.006" endtime="20210517 21:56:06.892"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>20</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20210516 21:22:15.811" level="INFO">Slept 20 seconds</msg>
-<status status="PASS" starttime="20210516 21:21:55.796" endtime="20210516 21:22:15.811"/>
+<msg timestamp="20210517 21:56:26.895" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20210517 21:56:06.892" endtime="20210517 21:56:26.895"/>
 </kw>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20210516 21:22:16.261" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20210516 21:22:15.812" endtime="20210516 21:22:16.261"/>
-</kw>
-<status status="PASS" starttime="20210516 21:21:54.760" endtime="20210516 21:22:16.261"/>
+<status status="PASS" starttime="20210517 21:56:05.877" endtime="20210517 21:56:26.895"/>
 </kw>
 <kw name="Encerrar sessão" library="base" type="TEARDOWN">
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20210516 21:22:16.262" endtime="20210516 21:22:18.428"/>
+<status status="PASS" starttime="20210517 21:56:26.896" endtime="20210517 21:56:29.075"/>
 </kw>
-<status status="PASS" starttime="20210516 21:22:16.262" endtime="20210516 21:22:18.428"/>
+<status status="PASS" starttime="20210517 21:56:26.896" endtime="20210517 21:56:29.075"/>
 </kw>
-<status status="PASS" starttime="20210516 21:21:47.645" endtime="20210516 21:22:18.430"/>
+<status status="PASS" starttime="20210517 21:55:57.712" endtime="20210517 21:56:29.077"/>
 </test>
-<status status="PASS" starttime="20210516 21:21:47.484" endtime="20210516 21:22:18.436"/>
+<status status="PASS" starttime="20210517 21:55:57.523" endtime="20210517 21:56:29.083"/>
 </suite>
 <statistics>
 <total>
